@@ -17,6 +17,14 @@ const config: Config = {
       xl: { min: '1441px', max: '1920px' }, //데스크탑
       xxl: { min: '1921px' }, //데스크탑
     },
+    colors: {
+      'primary-yellow': 'rgba(252, 232, 80, 0.5)',
+      'primary-yellow-solid': 'rgba(252, 232, 80, 1)',
+      'primary-blue': 'rgba(56, 122, 223, 0.5)',
+      'primary-blue-solid': 'rgba(56, 122, 223, 1)',
+      'light-blue': 'rgba(144, 160, 240, 1)',
+      'dark-gray': 'rgba(33, 32, 30, 1)',
+    },
   },
   plugins: [require('daisyui')],
 };
