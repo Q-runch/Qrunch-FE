@@ -10,8 +10,8 @@ const config: Config = {
       },
     },
     screens: {
-      xs: { min: '0px', max: '350px' }, //모바일
-      sm: { min: '350px', max: '720px' }, //모바일
+      xs: { min: '0px', max: '375px' }, //모바일
+      sm: { min: '375px', max: '720px' }, //모바일
       md: { min: '721px', max: '1080px' }, //테블릿
       lg: { min: '1081px', max: '1440px' }, //테블릿 & 데스크탑
       xl: { min: '1441px', max: '1920px' }, //데스크탑
