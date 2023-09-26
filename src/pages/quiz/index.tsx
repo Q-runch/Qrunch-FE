@@ -1,15 +1,23 @@
 import React from 'react';
+import icons from '@/assets/icons/icon';
+import { quizData } from '@/constant/quiz';
 
 const Quiz = () => {
-  // 퀴즈 항목 데이터 배열
-  const quizItems = [1, 2, 3, 4];
-
   return (
-    <div className="w-full h-screen bg-dark-gray">
-      <h1 className="text-primary-blue text-[40px] md:text-[20px]">퀴즈zz</h1>
-      {quizItems.map((item, index) => (
-        <div key={index} className="border-2 border-primary-blue rounded-xl m-2 w-[900px] h-[120px]">
-          {item}
+    <div className="w-10/12 h-screen mx-auto">
+      {quizData.map((quiz, index) => (
+        <div key={index}>
+          <h1 className="text-primary-blue text-[40px] md:text-[20px]">{quiz.question}</h1>
+          <ul className="list-none">
+            {quiz.options.map((option, optionIndex) => (
+              <li
+                key={optionIndex}
+                className="border-2 border-primary-blue-solid rounded-xl m-2 p-4 hover:bg-primary-blue"
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
         </div>
       ))}
     </div>
