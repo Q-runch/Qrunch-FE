@@ -1,15 +1,19 @@
 import React from 'react';
 
-const quiz = () => {
+const Quiz = () => {
+  // 퀴즈 항목 데이터 배열
+  const quizItems = [1, 2, 3, 4];
+
   return (
-    <div className="w-full h-screen bg-dark-gray ">
-      <h1 className="bg-primary-blue">퀴즈zz</h1>
-      <div className="border-2 border-primary-blue rounded-xl m-2 w-[900px] h-[120px]">1</div>
-      <div className="border-2 border-primary-blue rounded-xl m-2 w-[900px] h-[120px]">2</div>
-      <div className="border-2 border-primary-blue rounded-xl m-2 w-[900px] h-[120px]">3</div>
-      <div className="border-2 border-primary-blue rounded-xl m-2 w-[900px] h-[120px]">4</div>
+    <div className="w-full h-screen bg-dark-gray">
+      <h1 className="text-primary-blue text-[40px] md:text-[20px]">퀴즈zz</h1>
+      {quizItems.map((item, index) => (
+        <div key={index} className="border-2 border-primary-blue rounded-xl m-2 w-[900px] h-[120px]">
+          {item}
+        </div>
+      ))}
     </div>
   );
 };
 
-export default quiz;
+export default Quiz;
