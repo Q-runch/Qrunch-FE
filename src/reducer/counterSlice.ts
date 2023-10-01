@@ -1,23 +1,23 @@
 import { HYDRATE } from 'next-redux-wrapper';
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '@/store/store';
 
-interface CounterState {
-  value: number;
+// Type for our state
+export interface AuthState {
+  authState: boolean;
 }
-
-const initialState: CounterState = {
-  value: 0,
+// Initial state
+const initialState: AuthState = {
+  authState: false,
 };
-
-const counterSlice = createSlice({
-  name: 'counter',
+// Actual Slice
+export const authSlice = createSlice({
+  name: 'auth',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
+    // Action to set the authentication status
+    setAuthState(state, action) {
+      state.authState = action.payload;
     },
   },
 
@@ -26,14 +26,12 @@ const counterSlice = createSlice({
     [HYDRATE]: (state, action) => {
       return {
         ...state,
-        // ...action.payload.counter
+        // ...action.payload.auth
       };
     },
   },
 });
 
-const { actions, reducer: counterReducer } = counterSlice;
-
-export const { increment, decrement } = actions;
-
-export default counterReducer;
+export const { setAuthState } = authSlice.actions;
+export const selectAuthState = (state: RootState) => state.auth.authState;
+export default authSlice.reducer;

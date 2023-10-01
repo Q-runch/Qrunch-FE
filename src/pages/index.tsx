@@ -1,34 +1,24 @@
-import { wrapper } from '@/store/store';
-import { useAppDispatch, useAppSelector } from '@/hooks/reduxHook';
-import { decrement, increment } from '@/reducer/counterSlice';
-import { setAuthState } from '@/reducer/authSlice';
+import UploadBox from '@/components/PDF/dragDrop';
+import { RootState } from '@/store/store';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Home = function () {
-  const { value: count } = useAppSelector((state) => state.counter);
-  const dispatch = useAppDispatch();
+  const activeButtonId = useSelector((state: RootState) => state.buttonToggle.activeButtonId);
 
   return (
-    <div>
-      <div>
-        <div className="flex justify-around">
-          <button onClick={() => dispatch(increment())}>increment</button>
-          <span>{count}</span>
-          <button onClick={() => dispatch(decrement())}>decrement</button>
-        </div>
+    <div className="w-full h-screen flex items-center justify-center">
+      <div className="w-2/3 h-4/5 border-2 border-primary-blue-solid">
+        {activeButtonId === 1 && (
+          <p className="text-primary-blue-solid">
+            <UploadBox />
+          </p>
+        )}
+        {activeButtonId === 2 && <p className="text-primary-blue-solid">URL</p>}
+        {activeButtonId === 3 && <p className="text-primary-blue-solid">TEXT</p>}
       </div>
     </div>
   );
 };
-
-export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ params }) => {
-  // 초기 상태를 설정할 수 있고, 커스텀 로직을 추가할 수 있다.
-  // 서버 단에서 Redux 액션을 수행할 수 있다.
-  store.dispatch(increment());
-  store.dispatch(setAuthState(false));
-  console.log('State on server', store.getState());
-  return {
-    props: {},
-  };
-});
 
 export default Home;
