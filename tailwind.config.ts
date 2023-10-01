@@ -8,6 +8,9 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      width: {
+        'calc-100-200': 'calc(100% - 200px)',
+      },
     },
     screens: {
       xs: { min: '0px', max: '350px' }, //모바일
@@ -23,7 +26,8 @@ const config: Config = {
       'primary-blue': 'rgba(56, 122, 223, 0.5)',
       'primary-blue-solid': 'rgba(56, 122, 223, 1)',
       'light-blue': 'rgba(144, 160, 240, 1)',
-      'dark-gray': 'rgba(33, 32, 30, 1)',
+      'dark-gray': 'rgba(15, 23, 42, 1)',
+      black: 'rgba(0,0,0,1)',
     },
   },
   plugins: [require('daisyui')],
