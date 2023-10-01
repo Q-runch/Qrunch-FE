@@ -2,7 +2,12 @@ export const quizData = [
   {
     id: 1,
     question: 'Quiz.1: 이것은 테스트 문제입니다.',
-    options: ['1번 답', '2번 답', '3번 답', '4번 답'],
+    options: [
+      'javascript',
+      'react',
+      '가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하',
+      'abcdefghijklmnopqrstuvwxyz',
+    ],
   },
   //   {
   //     id: 2,

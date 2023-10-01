@@ -18,6 +18,7 @@
 
 body {
   color: rgb(var(--background-end-rgb));
+  box-sizing: border-box;
   #__next {
     display: flex;
     width: 100vw;
