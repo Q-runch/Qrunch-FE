@@ -1,5 +1,5 @@
 import { combineReducers, configureStore, PayloadAction, ThunkAction, Action } from '@reduxjs/toolkit';
-import { createWrapper, HYDRATE } from 'next-redux-wrapper';
+import { createWrapper } from 'next-redux-wrapper';
 import counterReducer from '@/reducer/counterSlice';
 import { authSlice } from '@/reducer/authSlice';
 import uiSlice from '@/reducer/uiSlice';
