@@ -1,11 +1,16 @@
-import Sidebar from '@/components/Layout/sidebar';
+import { RootState } from '@/store/store';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Home = function () {
+  const activeButtonId = useSelector((state: RootState) => state.buttonToggle.activeButtonId);
+  const dispatch = useDispatch();
   return (
-    <div>
-      <div>
-        <p>hihihi</p>
+    <div className="w-full h-screen flex items-center justify-center">
+      <div className="w-2/3 h-4/5 border-2 border-primary-blue-solid">
+        {activeButtonId === 1 && <p className="text-primary-blue-solid">PDF</p>}
+        {activeButtonId === 2 && <p className="text-primary-blue-solid">URL</p>}
+        {activeButtonId === 3 && <p className="text-primary-blue-solid">TEXT</p>}
       </div>
     </div>
   );
