@@ -1,53 +1,22 @@
-import React, { useEffect } from 'react';
-import { FaTimes } from 'react-icons/fa';
-import { useSelector, useDispatch } from 'react-redux';
-import { toggleSidebar } from '@/reducer/uiSlice';
-import { RootState } from '@/store/store';
-import Link from 'next/link';
+import React from 'react';
 
 function Sidebar() {
-  const isSidebarOpen = useSelector((state: RootState) => state.ui.isSidebarOpen);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const handleClickOutside = (e: any) => {
-      if (!isSidebarOpen) return; // Don't handle clicks outside if the sidebar is closed
-      if (!e.target.closest('#sidebar')) {
-        dispatch(toggleSidebar()); // Close the sidebar when clicking outside
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isSidebarOpen, dispatch]);
-
-  const toggleSide = () => {
-    dispatch(toggleSidebar()); // Dispatch the toggleSidebar action to update the Redux store
-  };
-
   const hrefLink = [
-    { id: 1, text: '로그인', href: '/' },
-    { id: 2, text: '회원가입', href: '/' },
+    { id: 1, text: 'PDF' },
+    { id: 2, text: 'URL' },
+    { id: 3, text: 'TEXT' },
   ];
 
   return (
     <div
       id="sidebar"
-      className={`z-5 px-12 border-l-2 border-white bg-gray-800 h-full right-0 top-0 fixed transition-transform duration-500 ease-in-out ${
-        isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}
+      className={`z-5 px-12  bg-[#21201E] w-[200px] h-full left-0 top-0 md:w-full md:h-16 sm:h-16 sm:w-full fixed`}
     >
-      <div className="absolute left-0 p-4">
-        <FaTimes className="cursor-pointer" size={32} color="red" onClick={toggleSide} onKeyDown={toggleSide} />
-      </div>
-
-      <ul className="text-center font-bold text-white mt-20 sm:text-[8px]">
+      <ul className="text-center font-bold text-[#FCE850] mt-20 text-2xl md:flex md:flex-row md:justify-between md:-mt-4 sm:text-[16px] sm:-mt-4 sm:flex sm:flex-row sm:justify-between ">
         {hrefLink.map((link) => (
-          <li key={link.id} className="my-8">
-            <Link href={link.href}>{link.text}</Link>
-          </li>
+          <button key={link.id} className="flex flex-col my-8 sm:ml-2">
+            {link.text}
+          </button>
         ))}
       </ul>
     </div>

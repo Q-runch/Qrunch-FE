@@ -1,4 +1,5 @@
 import React from 'react';
+import Sidebar from './sidebar';
 
 const Header = () => {
   return (
@@ -7,6 +8,7 @@ const Header = () => {
         <img src="http://via.placeholder.com/24x24" className="rounded-[100%] mr-2" alt="profileImg" />
         <span>이름명</span>
       </div>
+      <Sidebar />
     </nav>
   );
 };
