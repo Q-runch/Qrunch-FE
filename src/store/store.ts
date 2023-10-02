@@ -5,6 +5,7 @@ import { authSlice } from '@/reducer/authSlice';
 import uiSlice from '@/reducer/uiSlice';
 import logger from 'redux-logger';
 import buttonToggle from '@/reducer/buttonToggle';
+import urlInput from '@/reducer/urlInput';
 
 const reducer = (state: any, action: PayloadAction<any>) => {
   return combineReducers({
@@ -12,6 +13,7 @@ const reducer = (state: any, action: PayloadAction<any>) => {
     [authSlice.name]: authSlice.reducer,
     ui: uiSlice,
     buttonToggle: buttonToggle,
+    url: urlInput,
   })(state, action);
 };
 

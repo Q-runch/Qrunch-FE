@@ -1,4 +1,5 @@
 import UploadBox from '@/components/PDF/dragDrop';
+import UrlInput from '@/components/URL/UrlInput';
 import { RootState } from '@/store/store';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -10,11 +11,15 @@ const Home = function () {
     <div className="w-full h-screen flex items-center justify-center sm:w-screen  sm:mt-8 md:w-screen   md:mt-8 lg:w-screen   lg:mt-8">
       <div className="w-2/3 h-4/5 border-2 border-primary-blue-solid ">
         {activeButtonId === 1 && (
-          <p className="text-primary-blue-solid">
+          <p className="text-primary-blue-solid ">
             <UploadBox />
           </p>
         )}
-        {activeButtonId === 2 && <p className="text-primary-blue-solid">URL</p>}
+        {activeButtonId === 2 && (
+          <p className="text-primary-blue-solid">
+            <UrlInput />
+          </p>
+        )}
         {activeButtonId === 3 && <p className="text-primary-blue-solid">TEXT</p>}
       </div>
     </div>
