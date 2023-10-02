@@ -1,4 +1,5 @@
 import UploadBox from '@/components/PDF/dragDrop';
+import TextInput from '@/components/Text/text';
 import UrlInput from '@/components/URL/UrlInput';
 import { RootState } from '@/store/store';
 import React from 'react';
@@ -20,7 +21,11 @@ const Home = function () {
             <UrlInput />
           </p>
         )}
-        {activeButtonId === 3 && <p className="text-primary-blue-solid">TEXT</p>}
+        {activeButtonId === 3 && (
+          <p className="text-primary-blue-solid">
+            <TextInput />
+          </p>
+        )}
       </div>
     </div>
   );
