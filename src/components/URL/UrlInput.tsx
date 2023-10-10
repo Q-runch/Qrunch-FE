@@ -23,7 +23,7 @@ const UrlInput: React.FC = () => {
   };
 
   return (
-    <div className={`flex flex-row justify-center items-center cursor-pointer w-full h-[80vh] m-auto p-[70px]`}>
+    <div className="flex flex-row justify-center items-center cursor-pointer w-full h-[80vh] m-auto p-[70px] sm:p-0">
       <input
         type="text"
         value={url}

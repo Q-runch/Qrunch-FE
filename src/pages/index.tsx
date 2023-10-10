@@ -9,7 +9,7 @@ const Home = function () {
   const activeButtonId = useSelector((state: RootState) => state.buttonToggle.activeButtonId);
 
   return (
-    <div className="w-full h-screen flex items-center justify-center sm:w-screen  sm:mt-8 md:w-screen   md:mt-8 lg:w-screen   lg:mt-8">
+    <div className="w-full h-screen flex items-center justify-center sm:w-screen md:w-screen lg:w-screen">
       <div className="w-2/3 h-4/5 border-2 border-primary-blue-solid ">
         {activeButtonId === 1 && (
           <p className="text-primary-blue-solid ">
