@@ -45,7 +45,7 @@ const UploadBox: React.FC = () => {
 
   return (
     <label
-      className={`flex flex-col justify-center items-center cursor-pointer w-full h-[80vh] m-auto  p-[70px]  sm:h-2/5 ${
+      className={`flex flex-col  justify-center items-center cursor-pointer w-full h-[80vh] m-auto  p-[70px]  sm:h-2/5 ${
         isActive ? ' active' : ''
       } `}
       onDragEnter={handleDragStart}
