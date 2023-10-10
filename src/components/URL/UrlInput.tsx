@@ -23,17 +23,21 @@ const UrlInput: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-row justify-center items-center cursor-pointer w-full h-[80vh] m-auto p-[70px] sm:p-0">
-      <input
-        type="text"
-        value={url}
-        onChange={handleInputChange}
-        placeholder="URL을 입력하세요"
-        className="border-b-2 bg-black rounded-md p-2 w-full"
-      />
-      <button onClick={handleSubmit} className="ml-2 cursor-pointer">
-        <Search size={32} />
-      </button>
+    <div className="flex justify-center items-center w-full h-[80vh] sm:h-[30vh]">
+      <div className="w-full sm:max-w-[400px] border-2 bg-black rounded-md p-2 flex">
+        <input
+          type="text"
+          value={url}
+          onChange={handleInputChange}
+          placeholder="URL을 입력하세요"
+          className="flex-grow bg-transparent outline-none"
+        />
+        <button onClick={handleSubmit} className="ml-2 cursor-pointer">
+          <div className="flex items-center">
+            <Search size={32} />
+          </div>
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { setText } from '@/reducer/textInput'; // Import your Redux action
 
@@ -6,32 +6,33 @@ const TextInput = () => {
   const dispatch = useDispatch();
   const [inputText, setInputText] = useState('');
 
-  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setInputText(event.target.value);
+  const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setInputText(e.target.value);
   };
 
   const handleSubmit = () => {
-    // Dispatch the action to update the text in the Redux store
-    dispatch(setText(inputText));
-
-    // Here, you can send `inputText` to your server using an API call or any other method.
-    // ...
-
-    // Clear the input field
-    setInputText('');
+    // Process the text entered here so that it can be sent to the server.
+    if (inputText) {
+      dispatch(setText(inputText)); // Update state using Redux actions
+    }
   };
 
   return (
-    <div className="flex flex-col justify-center items-center ">
-      <textarea
-        className="flex justify-center bg-black items-center w-full h-[79.5vh]"
-        placeholder="Enter Text"
-        value={inputText}
-        onChange={handleChange}
-      />
-      <button className="cursor-pointer" onClick={handleSubmit}>
-        Submit
-      </button>
+    <div className="flex justify-center items-center w-full h-[80vh] sm:h-[30vh]">
+      <div className="p-4 sm:p-8">
+        <textarea
+          value={inputText}
+          onChange={handleInputChange}
+          placeholder="Enter text"
+          className="resize-none border-2 rounded-md p-2 w-full h-96 sm:h-72 bg-black text-white"
+        />
+        <button
+          onClick={handleSubmit}
+          className="mt-4 sm:mt-6 border-2 text-white px-4 py-2 rounded-md hover:bg-primary-blue-dark transition duration-300 ease-in-out"
+        >
+          Create a summary
+        </button>
+      </div>
     </div>
   );
 };

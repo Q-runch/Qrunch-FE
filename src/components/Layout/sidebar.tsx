@@ -18,7 +18,7 @@ function Sidebar() {
   return (
     <div
       id="sidebar"
-      className={`z-5 px-12  bg-[#21201E] w-[200px] h-full left-0 top-0 md:w-full md:h-16 sm:h-16 sm:w-full fixed relative`}
+      className={`z-5 px-12  bg-[#21201E] w-[200px] h-full left-0 top-0 md:w-full md:h-16 sm:h-16 sm:w-full fixed `}
     >
       <div className="hidden xl:contents mt-4">
         <Link href="/">
