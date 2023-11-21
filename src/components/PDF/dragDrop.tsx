@@ -45,7 +45,7 @@ const UploadBox: React.FC = () => {
 
   return (
     <label
-      className={`flex flex-col justify-center items-center cursor-pointer w-full h-[80vh] m-auto  p-[70px] ${
+      className={`flex flex-col  justify-center items-center cursor-pointer w-full h-[80vh] m-auto  p-[70px]  sm:h-2/5 ${
         isActive ? ' active' : ''
       } `}
       onDragEnter={handleDragStart}
@@ -62,7 +62,7 @@ const UploadBox: React.FC = () => {
       {!uploadedInfo && (
         <>
           <UploadIcons size={64} color="blue" />
-          <span className="font-medium text-[20px] my-5 mb-3">PDF 파일을 올려주세요</span>
+          <span className="font-medium text-[20px] my-5 mb-3 sm:text-[10px]">PDF 파일을 올려주세요</span>
         </>
       )}
     </label>

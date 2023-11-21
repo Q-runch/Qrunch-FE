@@ -28,6 +28,7 @@ const config: Config = {
       'light-blue': 'rgba(144, 160, 240, 1)',
       'dark-gray': 'rgba(15, 23, 42, 1)',
       black: 'rgba(0,0,0,1)',
+      white: 'rgba(255,255,255)',
     },
   },
   plugins: [require('daisyui')],
