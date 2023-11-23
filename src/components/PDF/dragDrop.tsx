@@ -1,70 +1,62 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 import icons from '@/assets/icons/icon';
-
-interface UploadedInfo {
-  name: string;
-  size: string;
-  type: string;
-}
+import { axiosInstance } from '@/axiosInstance';
 
 const UploadIcons = icons.upload;
 
 const UploadBox: React.FC = () => {
-  const [isActive, setActive] = useState(false);
-  const [uploadedInfo, setUploadedInfo] = useState<UploadedInfo | null>(null);
+  const [files, setFiles] = useState<FileList | undefined>();
 
-  const handleDragStart = () => setActive(true);
-  const handleDragEnd = () => setActive(false);
-  const handleDragOver = (event: React.DragEvent<HTMLLabelElement>) => {
-    event.preventDefault();
-  };
-
-  const setFileInfo = (file: File) => {
-    const { name, size: byteSize, type } = file;
-    const size = (byteSize / (1024 * 1024)).toFixed(2) + 'mb';
-    setUploadedInfo({ name, size, type });
-  };
-
-  const handleDrop = (event: React.DragEvent<HTMLLabelElement>) => {
-    event.preventDefault();
-    setActive(false);
-
-    const file = event.dataTransfer.files[0];
-    if (file) {
-      setFileInfo(file);
+  const onChangeFiles = (e: ChangeEvent<HTMLInputElement>) => {
+    const fileList = e.target.files;
+    if (fileList !== null) {
+      setFiles(fileList);
     }
   };
 
-  const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setFileInfo(file);
+  const upload = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!files) {
+      alert('파일을 선택해주세요.');
+      return;
+    }
+    const formData = new FormData();
+    Array.from(files).forEach((el) => {
+      formData.append('userfile', el);
+    });
+    console.log(`${process.env.NEXT_PUBLIC_BASE_URL}summary/pdf`);
+
+    try {
+      const response = await axiosInstance.post(`summary/pdf`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        transformRequest: [
+          function () {
+            return formData;
+          },
+        ],
+      });
+      alert('성공');
+    } catch (error) {
+      alert('에러 ㅠ');
+      console.log(error);
     }
   };
 
   return (
     <label
-      className={`flex flex-col  justify-center items-center cursor-pointer w-full h-[80vh] m-auto  p-[70px]  sm:h-2/5 ${
-        isActive ? ' active' : ''
-      } `}
-      onDragEnter={handleDragStart}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragEnd}
-      onDrop={handleDrop}
+      className={`flex flex-col  justify-center items-center cursor-pointer w-full h-[80vh] m-auto p-[70px] sm:h-2/5`}
     >
-      <input type="file" className="hidden" onChange={handleUpload} />
-      {uploadedInfo && (
-        <ul className="w-full list-none p-0 gap-4 flex flex-col">
-          <span>기다려주셔</span>
-        </ul>
-      )}
-      {!uploadedInfo && (
-        <>
-          <UploadIcons size={64} color="blue" />
-          <span className="font-medium text-[20px] my-5 mb-3 sm:text-[10px]">PDF 파일을 올려주세요</span>
-        </>
-      )}
+      <form onSubmit={upload} encType="multipart/form-data">
+        <input type="file" name="userfile" multiple className="hidden" onChange={onChangeFiles} />
+
+        <UploadIcons size={64} color="blue" />
+        <span className="font-medium text-[20px] my-5 mb-3 sm:text-[10px]">PDF 파일을 올려주세요</span>
+        <input type="submit" />
+      </form>
     </label>
   );
 };
