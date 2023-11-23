@@ -1,6 +1,6 @@
 import React from 'react';
 import icons from '@/assets/icons/icon';
-import QuizItem from '@/components/quiz/QuizItem';
+import QuizItem from '@/components/quiz/quizItem';
 
 const Quiz = () => {
   return <QuizItem />;

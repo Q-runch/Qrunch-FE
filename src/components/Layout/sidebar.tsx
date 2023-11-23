@@ -11,8 +11,7 @@ function Sidebar() {
   };
   const hrefLink = [
     { id: 1, text: 'PDF' },
-    { id: 2, text: 'URL' },
-    { id: 3, text: 'TEXT' },
+    { id: 2, text: 'TEXT' },
   ];
 
   return (

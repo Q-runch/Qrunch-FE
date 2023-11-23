@@ -1,6 +1,5 @@
 import UploadBox from '@/components/PDF/dragDrop';
 import TextInput from '@/components/Text/text';
-import UrlInput from '@/components/URL/UrlInput';
 import { RootState } from '@/store/store';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -18,12 +17,8 @@ const Home = function () {
             </p>
           </div>
         )}
+
         {activeButtonId === 2 && (
-          <p className="text-primary-blue-solid">
-            <UrlInput />
-          </p>
-        )}
-        {activeButtonId === 3 && (
           <p className="text-primary-blue-solid">
             <TextInput />
           </p>
