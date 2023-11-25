@@ -9,20 +9,14 @@ const Home = function () {
 
   return (
     <div className="w-full h-screen flex items-center justify-center sm:w-screen md:w-screen lg:w-screen">
-      <div className="w-2/3 h-4/5  sm:h-[250px]  sm:border-0">
+      <div className="w-2/3 h-4/5 text-primary-blue-solid  sm:h-[250px]  sm:border-0">
         {activeButtonId === 1 && (
           <div className="border-2 border-primary-blue-solid">
-            <p className="text-primary-blue-solid ">
-              <UploadBox />
-            </p>
+            <UploadBox />
           </div>
         )}
 
-        {activeButtonId === 2 && (
-          <p className="text-primary-blue-solid">
-            <TextInput />
-          </p>
-        )}
+        {activeButtonId === 2 && <TextInput />}
       </div>
     </div>
   );
