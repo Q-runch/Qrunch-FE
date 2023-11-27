@@ -28,6 +28,10 @@ const QuizParams: React.FC<QuizParamsProps> = () => {
   const handleNext = () => {
     setQuizIndex((prevIndex) => Math.min(prevIndex + 1, QuizData.length - 1));
   };
+  const handleIndex = (selectNum: number) => {
+    console.log(selectNum, '선택값');
+    setSelectIndex(() => selectNum);
+  };
 
   return (
     <>
@@ -40,6 +44,8 @@ const QuizParams: React.FC<QuizParamsProps> = () => {
           onPrev={handlePrev}
           onNext={handleNext}
           quizMaxIndex={QuizData.length - 1}
+          selectIndex={selectIndex}
+          onSelectIndex={handleIndex}
         />
       )}
     </>
