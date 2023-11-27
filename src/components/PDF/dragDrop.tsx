@@ -1,11 +1,12 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-
+import { useRouter } from 'next/router';
 import icons from '@/assets/icons/icon';
-import axios from 'axios';
+import { axiosInstance } from '@/axiosInstance';
 
 const UploadIcons = icons.upload;
 
 const UploadBox: React.FC = () => {
+  const router = useRouter();
   const [files, setFiles] = useState<FileList | undefined>();
 
   const onChangeFiles = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +30,7 @@ const UploadBox: React.FC = () => {
     console.log(`${process.env.NEXT_PUBLIC_BASE_URL}summary/pdf`);
 
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}summary/pdf`, formData, {
+      const response = await axiosInstance.post(`summary/pdf`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data;',
         },
@@ -39,7 +40,9 @@ const UploadBox: React.FC = () => {
           },
         ],
       });
-      alert('성공');
+      console.log(response.data.data.summarize.id);
+      const id = response.data.data.summarize.id;
+      router.push(`/summary/${id}`);
     } catch (error) {
       alert('에러 ㅠ');
       console.log(error);
