@@ -11,7 +11,7 @@ const QuizButton: React.FC<QuizButtonProps> = ({ id }) => {
   const router = useRouter();
   const sendQuiz = async () => {
     try {
-      const response = await axios.post(`https://sonkangjae.kro.kr/quiz`, { summaryId: id });
+      const response = await axiosInstance.post(`quiz`, { summaryId: id });
       console.log(response);
       router.push(`/quiz/${id}`);
     } catch (error) {
