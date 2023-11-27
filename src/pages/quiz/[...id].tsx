@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import useQuizItem from '@/hooks/quiz/useQuizItem';
 import QuizSkeleton from '@/components/quiz/QuizSkeleton';
-import QuizItem from '@/components/quiz/QuizItem';
+import QuizItem from '@/components/quiz/quizItem';
 
 interface QuizParamsProps {}
 
