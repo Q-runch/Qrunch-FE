@@ -1,11 +1,9 @@
 import { combineReducers, configureStore, PayloadAction, ThunkAction, Action } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
-
 import { authSlice } from '@/reducer/authSlice';
 import uiSlice from '@/reducer/uiSlice';
 import logger from 'redux-logger';
 import buttonToggle from '@/reducer/buttonToggle';
-import urlInput from '@/reducer/urlInput';
 import textInput from '@/reducer/textInput';
 
 const reducer = (state: any, action: PayloadAction<any>) => {
@@ -13,7 +11,7 @@ const reducer = (state: any, action: PayloadAction<any>) => {
     [authSlice.name]: authSlice.reducer,
     ui: uiSlice,
     buttonToggle: buttonToggle,
-    url: urlInput,
+
     text: textInput,
   })(state, action);
 };
