@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 interface QuizItem {
+  data: any;
   // Define the structure of your QuizItem data
 }
 
@@ -17,7 +18,6 @@ const useQuizItem = (quizId: any): QuizItemData => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        console.log('주소', `https://sonkangjae.kro.kr/summary/${quizId}`);
         const response = await fetch(`https://sonkangjae.kro.kr/summary/${quizId}`);
         const result = await response.json();
         setData(result);
