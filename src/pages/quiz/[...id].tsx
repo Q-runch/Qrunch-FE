@@ -13,6 +13,7 @@ const QuizParams: React.FC<QuizParamsProps> = () => {
   const { data: fetchedData } = useQuizItem(summaryId);
   const [QuizData, setQuizData] = useState([]);
   const [quizIndex, setQuizIndex] = useState(0);
+  const [selectIndex, setSelectIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (fetchedData) {
@@ -33,7 +34,13 @@ const QuizParams: React.FC<QuizParamsProps> = () => {
       {QuizData.length === 0 ? (
         <QuizSkeleton />
       ) : (
-        <QuizItem quiz={QuizData[quizIndex]} quizIndex={quizIndex} onPrev={handlePrev} onNext={handleNext} />
+        <QuizItem
+          quiz={QuizData[quizIndex]}
+          quizIndex={quizIndex}
+          onPrev={handlePrev}
+          onNext={handleNext}
+          quizMaxIndex={QuizData.length - 1}
+        />
       )}
     </>
   );

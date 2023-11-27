@@ -7,8 +7,8 @@ const QuizSkeleton = () => {
     <>
       <div className="w-full h-screen flex items-center justify-center">
         <div className="w-5/6 mx-auto">
-          <h1 className="text-primary-blue-solid text-[30px] font-bold">
-            <span className="loading loading-text loading-lg"></span>
+          <h1 className="text-primary-blue-solid text-[30px] font-bold sm:text-[22px]">
+            <span className="animate-pulse bg-slate-200">loading...</span>
           </h1>
 
           <ul className="list-none mt-6">

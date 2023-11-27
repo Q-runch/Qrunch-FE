@@ -4,11 +4,12 @@ import React from 'react';
 interface QuizItemProps {
   quiz: QuizItemData;
   quizIndex: number;
+  quizMaxIndex: number;
   onPrev: () => void;
   onNext: () => void;
 }
 
-const QuizItem: React.FC<QuizItemProps> = ({ quiz, quizIndex, onNext, onPrev }) => {
+const QuizItem: React.FC<QuizItemProps> = ({ quiz, quizIndex, onNext, onPrev, quizMaxIndex }) => {
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="w-5/6 mx-auto">
@@ -31,13 +32,19 @@ const QuizItem: React.FC<QuizItemProps> = ({ quiz, quizIndex, onNext, onPrev }) 
         <div className="w-full flex justify-between mt-3">
           <button
             onClick={onPrev}
-            className="w-[80px] h-[50px] border-2 border-primary-blue-solid rounded-xl text-primary-blue-solid hover:bg-primary-blue"
+            disabled={quizIndex === 0}
+            className={`w-[80px] h-[50px] border-2 border-primary-blue-solid rounded-xl text-primary-blue-solid hover:bg-primary-blue ${
+              quizIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
             Prev
           </button>
           <button
             onClick={onNext}
-            className="w-[80px] h-[50px] border-2 border-primary-blue-solid rounded-xl text-primary-blue-solid hover:bg-primary-blue"
+            disabled={quizIndex === quizMaxIndex}
+            className={`w-[80px] h-[50px] border-2 border-primary-blue-solid rounded-xl text-primary-blue-solid hover:bg-primary-blue ${
+              quizIndex === quizMaxIndex ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
             Next
           </button>
