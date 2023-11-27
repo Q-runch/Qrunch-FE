@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { axiosInstance } from '@/axiosInstance';
 import React from 'react';
+import Swal from 'sweetalert2';
 
 interface QuizItemProps {
   quiz: QuizItemData;
@@ -21,13 +22,15 @@ const QuizItem: React.FC<QuizItemProps> = ({
   selectIndex,
   onSelectIndex,
 }) => {
-  console.log(quiz, '퀴즈값');
   const SubmitAnswer = async (userAnswer: number) => {
     onSelectIndex(userAnswer);
 
     const response = await axiosInstance.post(`quiz/submit/${quiz.id}`, { answer: userAnswer });
     const data = response.data;
-    alert(data.message);
+    Swal.fire({
+      title: data.message,
+      confirmButtonText: '확인',
+    });
   };
 
   return (
