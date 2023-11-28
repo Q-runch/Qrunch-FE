@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import { setText } from '@/reducer/textInput'; // Import your Redux action
+import { setText } from '@/reducer/textInput';
 
 const TextInput = () => {
   const dispatch = useDispatch();
@@ -11,9 +11,8 @@ const TextInput = () => {
   };
 
   const handleSubmit = () => {
-    // Process the text entered here so that it can be sent to the server.
     if (inputText) {
-      dispatch(setText(inputText)); // Update state using Redux actions
+      dispatch(setText(inputText));
     }
   };
 

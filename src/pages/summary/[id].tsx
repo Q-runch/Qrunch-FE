@@ -1,4 +1,3 @@
-// pages/summary/[id].tsx
 import React from 'react';
 
 import SummarizeComponents from '@/components/summary/summary';
