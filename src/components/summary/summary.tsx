@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { axiosInstance } from '@/axiosInstance';
 import QuizButton from '../quiz/quizButton';
+import Swal from 'sweetalert2';
 
 interface Summary {
   id: string;
@@ -27,18 +28,39 @@ const SummarizeComponents = () => {
     fetchData();
   }, [router.isReady, router.query.id]);
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(summary?.summary || '');
+    Swal.fire({
+      position: 'top-end',
+      html: '<p style="font-size: 14px;">요약문이 클립보드에 복사되었습니다.</p>',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
+
   if (!summary) {
     return <p>Loading...</p>;
   }
 
   return (
-    <div>
-      <div
-        className={`flex text-white text-xl sm:text-[10px] md:text-base lg:text-xl xl:text-2xl items-center text-center w-full h-[80vh] p-[70px] sm:p-2 sm:h-2/5 overflow-auto`}
-      >
-        <p>{summary.summary}</p>
+    <div className="w-full h-screen flex items-center flex-col justify-center sm:w-screen md:w-screen lg:w-screen">
+      <div className="w-2/3 h-4/5 text-primary-blue-solid  sm:h-[250px]  sm:border-0 relative">
+        <div className="flex justify-end">
+          <button onClick={copyToClipboard} className="flex justify-start mb-1 text-xl">
+            💾
+          </button>
+        </div>
+        <div className="border-2 border-primary-blue-solid">
+          <div
+            className={`flex text-white text-xl sm:text-[10px] md:text-base lg:text-xl xl:text-2xl items-center text-center w-full h-[80vh] p-[70px] sm:p-2 sm:h-2/5 overflow-auto`}
+          >
+            <p>{summary.summary}</p>
+          </div>
+        </div>
+        <div>
+          <QuizButton id={summary.id} />
+        </div>
       </div>
-      <QuizButton id={summary.id} />
     </div>
   );
 };
