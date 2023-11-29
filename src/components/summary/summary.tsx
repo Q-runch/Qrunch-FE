@@ -4,6 +4,7 @@ import { axiosInstance } from '@/axiosInstance';
 import QuizButton from '../quiz/quizButton';
 import Swal from 'sweetalert2';
 import icons from '@/assets/icons/icon';
+import Skeleton from './skeleton';
 
 const ClipBoardIcon = icons.clipboard;
 
@@ -46,8 +47,8 @@ const SummarizeComponents = () => {
   }
 
   return (
-    <div className="w-full h-screen flex items-center flex-col justify-center sm:w-screen md:w-screen lg:w-screen">
-      <div className="w-2/3 h-4/5 text-primary-blue-solid  sm:h-[250px]  sm:border-0 relative">
+    <div className="w-full h-screen flex items-center flex-col justify-center ">
+      <div className="w-5/6 text-primary-blue-solid mx-auto relative">
         <div className="flex justify-end mb-2">
           <button onClick={copyToClipboard} className="mr-5">
             <ClipBoardIcon size={22} />
@@ -59,7 +60,7 @@ const SummarizeComponents = () => {
           <div
             className={`flex text-white text-xl sm:text-[10px] md:text-base lg:text-xl xl:text-2xl items-center text-center w-full h-[80vh] p-[70px] sm:p-2 sm:h-2/5 overflow-auto`}
           >
-            <p>{summary.summary}</p>
+            {summary ? <p>{summary.summary}</p> : <Skeleton />}
           </div>
         </div>
       </div>
