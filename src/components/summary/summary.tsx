@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { axiosInstance } from '@/axiosInstance';
 import QuizButton from '../quiz/quizButton';
 import Swal from 'sweetalert2';
 import icons from '@/assets/icons/icon';
 import Skeleton from './skeleton';
+import { getSummary } from '@/api/summary/summaryApi';
 
 const ClipBoardIcon = icons.clipboard;
 
@@ -21,12 +21,8 @@ const SummarizeComponents = () => {
     if (!router.isReady) return;
 
     const fetchData = async () => {
-      try {
-        const response = await axiosInstance.get(`summary/${router.query.id}`);
-        setSummary(response.data.data.summary);
-      } catch (error) {
-        console.log(error);
-      }
+      const summaryData = await getSummary(router.query.id as string);
+      setSummary(summaryData);
     };
 
     fetchData();

@@ -1,53 +1,25 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import icons from '@/assets/icons/icon';
-import { axiosInstance } from '@/axiosInstance';
+import { uploadPdf } from '@/api/pdf/pdfApi';
+import { useUploadHandlers } from '@/utils/upLoadHandler';
 
 const UploadIcons = icons.upload;
 
 const UploadBox: React.FC = () => {
   const router = useRouter();
-  const [files, setFiles] = useState<Array<File>>([]);
-  const [dragging, setDragging] = useState<boolean>(false);
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const fileList = e.target.files;
-      setFiles((prev) => [...prev, ...Array.from(fileList)]);
-    }
-  };
-
-  const handleIconClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handleDragIn = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
-
-  const handleDragOut = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragging(false);
-  };
-
-  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragging(true);
-  };
-
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragging(false);
-    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      setFiles((prev) => [...prev, ...Array.from(e.dataTransfer.files)]);
-      e.dataTransfer.clearData();
-    }
-  };
+  const {
+    files,
+    dragging,
+    handleFileSelect,
+    handleIconClick,
+    handleDragIn,
+    handleDragOut,
+    handleDragOver,
+    handleDrop,
+    fileInputRef,
+  } = useUploadHandlers();
 
   const upload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,21 +27,11 @@ const UploadBox: React.FC = () => {
       alert('파일을 선택해주세요.');
       return;
     }
-    const formData = new FormData();
-    files.forEach((file) => {
-      formData.append('file', file);
-    });
-    try {
-      const response = await axiosInstance.post(`summary/pdf`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data;',
-        },
-      });
-      const id = response.data.data.summarize.id;
+    const id = await uploadPdf(files);
+    if (id) {
       router.push(`/summary/${id}`);
-    } catch (error) {
-      alert('에러 ㅠ');
-      console.log(error);
+    } else {
+      alert('에러가 발생했습니다.');
     }
   };
 
