@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import QuizButton from '../quiz/quizButton';
+import QuizButton from '@/components/quiz/quizButton';
 import Swal from 'sweetalert2';
 import icons from '@/assets/icons/icon';
-import Skeleton from './skeleton';
+import Skeleton from '@/components/summary/skeleton';
 import { getSummary } from '@/api/summary/summaryApi';
+import { SummaryDTO } from '@/types/summary';
 
 const ClipBoardIcon = icons.clipboard;
 
-interface Summary {
-  id: string;
-  summary: string;
-}
-
 const SummarizeComponents = () => {
   const router = useRouter();
-  const [summary, setSummary] = useState<Summary | null>(null);
+  const [summary, setSummary] = useState<SummaryDTO | null>(null);
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -46,11 +42,11 @@ const SummarizeComponents = () => {
     <div className="w-full h-screen flex items-center flex-col justify-center ">
       <div className="w-5/6 text-primary-blue-solid mx-auto relative">
         <div className="flex justify-end mb-2">
-          <button onClick={copyToClipboard} className="mr-5">
+          <button onClick={copyToClipboard} className="mr-5" title="클립보드에 복사">
             <ClipBoardIcon size={22} />
           </button>
 
-          <QuizButton id={summary.id} />
+          <QuizButton id={summary.id} title="퀴즈 만들기" />
         </div>
         <div className="border-2 border-primary-blue-solid">
           <div

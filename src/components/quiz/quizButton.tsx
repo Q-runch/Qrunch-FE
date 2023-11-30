@@ -1,15 +1,12 @@
 import icons from '@/assets/icons/icon';
 import { axiosInstance } from '@/axiosInstance';
+import { QuizButtonDTO } from '@/types/quizButton';
 import { useRouter } from 'next/router';
 import React from 'react';
 
 const QuizIcon = icons.quiz;
 
-interface QuizButtonProps {
-  id: string;
-}
-
-const QuizButton: React.FC<QuizButtonProps> = ({ id }) => {
+const QuizButton: React.FC<QuizButtonDTO> = ({ id, title }) => {
   const router = useRouter();
   const sendQuiz = async () => {
     try {
@@ -21,7 +18,7 @@ const QuizButton: React.FC<QuizButtonProps> = ({ id }) => {
     }
   };
   return (
-    <button onClick={sendQuiz}>
+    <button onClick={sendQuiz} title={title}>
       <QuizIcon size={20} />
     </button>
   );

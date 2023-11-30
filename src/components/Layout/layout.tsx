@@ -1,11 +1,8 @@
-import React, { ReactNode } from 'react';
-import Header from './header';
+import React from 'react';
+import Header from '@/components/Layout/header';
+import { LayoutDTO } from '@/types/layout';
 
-interface LayoutProps {
-  children: ReactNode;
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutDTO> = ({ children }) => {
   return (
     <>
       <Header />

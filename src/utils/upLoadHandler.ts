@@ -8,7 +8,7 @@ export const useUploadHandlers = () => {
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const fileList = e.target.files;
-      setFiles((prev) => [...prev, ...Array.from(fileList)]);
+      setFiles([Array.from(fileList)[0]]);
     }
   };
 
@@ -38,7 +38,7 @@ export const useUploadHandlers = () => {
     e.stopPropagation();
     setDragging(false);
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      setFiles((prev) => [...prev, ...Array.from(e.dataTransfer.files)]);
+      setFiles([Array.from(e.dataTransfer.files)[0]]);
       e.dataTransfer.clearData();
     }
   };

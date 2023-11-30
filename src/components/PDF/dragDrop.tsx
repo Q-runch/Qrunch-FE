@@ -28,6 +28,7 @@ const UploadBox: React.FC = () => {
       return;
     }
     const id = await uploadPdf(files);
+
     if (id) {
       router.push(`/summary/${id}`);
     } else {
@@ -37,7 +38,7 @@ const UploadBox: React.FC = () => {
 
   return (
     <div className="border-2 border-primary-blue-solid rounded-xl relative">
-      <input type="file" ref={fileInputRef} onChange={handleFileSelect} className="hidden" multiple />
+      <input type="file" ref={fileInputRef} onChange={handleFileSelect} className="hidden" />
       <div
         onDragEnter={handleDragIn}
         onDragLeave={handleDragOut}

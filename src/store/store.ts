@@ -11,7 +11,6 @@ const reducer = (state: any, action: PayloadAction<any>) => {
     [authSlice.name]: authSlice.reducer,
     ui: uiSlice,
     buttonToggle: buttonToggle,
-
     text: textInput,
   })(state, action);
 };
