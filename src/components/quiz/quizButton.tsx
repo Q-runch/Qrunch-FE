@@ -1,7 +1,9 @@
+import icons from '@/assets/icons/icon';
 import { axiosInstance } from '@/axiosInstance';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import React from 'react';
+
+const QuizIcon = icons.quiz;
 
 interface QuizButtonProps {
   id: string;
@@ -19,8 +21,8 @@ const QuizButton: React.FC<QuizButtonProps> = ({ id }) => {
     }
   };
   return (
-    <button onClick={sendQuiz} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-      Quiz 만들기
+    <button onClick={sendQuiz}>
+      <QuizIcon size={20} />
     </button>
   );
 };

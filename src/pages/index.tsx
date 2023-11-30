@@ -8,8 +8,8 @@ const Home = function () {
   const activeButtonId = useSelector((state: RootState) => state.buttonToggle.activeButtonId);
 
   return (
-    <div className="w-full h-screen flex items-center justify-center sm:w-screen md:w-screen lg:w-screen">
-      <div className="w-2/3 h-4/5 text-primary-blue-solid  sm:h-[250px]  sm:border-0 d">
+    <div className="w-full h-screen flex items-center justify-center">
+      <div className="w-5/6 mx-auto">
         {activeButtonId === 1 && <UploadBox />}
 
         {activeButtonId === 2 && <TextInput />}

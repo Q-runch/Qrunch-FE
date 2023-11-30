@@ -24,7 +24,7 @@ function Sidebar() {
           <img src="/logo.svg" />
         </Link>
       </div>
-      <ul className="text-center font-bold text-primary-blue-solid text-2xl md:flex md:flex-row md:justify-between md:-mt-4 sm:text-[16px] sm:-mt-4 sm:flex sm:flex-row sm:justify-between">
+      <ul className="xl:ml-4 lg:ml-4 font-bold text-primary-blue-solid text-2xl md:flex md:flex-row md:justify-between md:-mt-4 sm:text-[16px] sm:-mt-4 sm:flex sm:flex-row sm:justify-between">
         {hrefLink.map((link) => (
           <button key={link.id} className="flex flex-col my-8 sm:ml-2" onClick={() => handleButtonClick(link.id)}>
             {link.text}
