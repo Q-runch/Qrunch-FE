@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
-import Footer from './Layout/footer';
-import Header from './Layout/header';
+import Header from './header';
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,8 +9,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Header />
-      <main className="mt-20 lg:w-2/3 lg:mx-auto xl:w-2/3 xl:mx-auto">{children}</main>
-      <Footer />
+      <main className="w-calc-100-200 sm:w-screen md:w-screen lg:w-screen h-screen bg-black">{children}</main>
     </>
   );
 };

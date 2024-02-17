@@ -1,16 +1,18 @@
 import { combineReducers, configureStore, PayloadAction, ThunkAction, Action } from '@reduxjs/toolkit';
-import { createWrapper, HYDRATE } from 'next-redux-wrapper';
-import counterReducer from '@/reducer/counterSlice';
+import { createWrapper } from 'next-redux-wrapper';
 import { authSlice } from '@/reducer/authSlice';
 import uiSlice from '@/reducer/uiSlice';
-
 import logger from 'redux-logger';
+import buttonToggle from '@/reducer/buttonToggle';
+import textInput from '@/reducer/textInput';
 
 const reducer = (state: any, action: PayloadAction<any>) => {
   return combineReducers({
-    counter: counterReducer,
     [authSlice.name]: authSlice.reducer,
     ui: uiSlice,
+    buttonToggle: buttonToggle,
+
+    text: textInput,
   })(state, action);
 };
 
