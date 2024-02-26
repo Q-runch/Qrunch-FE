@@ -1,15 +1,14 @@
-## Getting Started
+## Qrunch
+### openAI기반 PDF요약,퀴즈생성서비스
 
-First, run the development server:
+### RESULTS
+![summary](https://github.com/Q-runch/Qrunch-FE/assets/46455370/09807e73-64f3-4c06-bb3b-3bb9babc444a)
+![quiz](https://github.com/Q-runch/Qrunch-FE/assets/46455370/2edfe76b-7b6d-4a16-b58d-7dedd35de5dc)
+![2quiz](https://github.com/Q-runch/Qrunch-FE/assets/46455370/113d42e9-5fd0-4f63-8259-3d49064fdf01)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
+### STACKS
+Javascript ES6, NextJs, TypeScript, TailwindCSS, Axios, Redux
+### COMMIT RULE
 1. Feat - 새로운 기능 추가
 2. Fix - 버그 수정
 3. Docs - 문서 추가 및 수정
